@@ -1,4 +1,4 @@
-package jamesby.spark.sparksql;
+package jamesby.spark.pojo;
 
 import org.apache.spark.sql.Encoder;
 import org.apache.spark.sql.Encoders;

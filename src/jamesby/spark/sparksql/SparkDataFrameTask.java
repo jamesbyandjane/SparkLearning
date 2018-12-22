@@ -7,6 +7,9 @@ import org.apache.spark.sql.SparkSession;
 
 import com.esotericsoftware.minlog.Log;
 
+import jamesby.spark.utils.SparkConstants;
+import jamesby.spark.utils.SparkSessionUtils;
+
 import static org.apache.spark.sql.functions.col;
 
 import org.apache.log4j.Logger;
@@ -16,7 +19,7 @@ public class SparkDataFrameTask {
 	public void compute() throws AnalysisException {
 		SparkSession session = SparkSessionUtils.getSparkSession();
 		try {
-			Dataset<Row> df = session.read().json(SparkSqlConstants._FILE_NAME);
+			Dataset<Row> df = session.read().json(SparkConstants._FILE_NAME);
 		
 			Log.info("**********BEGIN:printSchema*************");
 			df.printSchema();

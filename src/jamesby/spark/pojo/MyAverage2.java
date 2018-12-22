@@ -1,4 +1,4 @@
-package jamesby.spark.sparksql;
+package jamesby.spark.pojo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -7,6 +7,13 @@ import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.TypedColumn;
+
+import jamesby.spark.pojo.Employee;
+import jamesby.spark.pojo.MyAverage;
+import jamesby.spark.pojo.MyAverage2;
+import jamesby.spark.utils.SparkConstants;
+import jamesby.spark.utils.SparkSessionUtils;
+
 import static org.apache.spark.sql.functions.col;
 
 public final class SparkAggregationTask {
@@ -15,7 +22,7 @@ public final class SparkAggregationTask {
 		SparkSession session = SparkSessionUtils.getSparkSession();
 		try {
 			Encoder<Employee> employeeEncoder = Encoders.bean(Employee.class);
-			Dataset<Employee> ds = session.read().json(SparkSqlConstants.filename03).as(employeeEncoder);
+			Dataset<Employee> ds = session.read().json(SparkConstants.filename03).as(employeeEncoder);
 			ds.show();
 
 			MyAverage myAverage = new MyAverage();
@@ -37,7 +44,7 @@ public final class SparkAggregationTask {
 		try {		
 			session.udf().register("myAverage2", new MyAverage2());
 	
-			Dataset<Row> df = session.read().json(SparkSqlConstants.filename03);
+			Dataset<Row> df = session.read().json(SparkConstants.filename03);
 			df.createOrReplaceTempView("employees");
 			df.show();
 	

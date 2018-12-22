@@ -19,6 +19,10 @@ import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 
+import jamesby.spark.pojo.User;
+import jamesby.spark.utils.SparkConstants;
+import jamesby.spark.utils.SparkSessionUtils;
+
 public class SparkDataSetTask {
 	private static Logger logger = Logger.getLogger(SparkDataFrameTask.class);
 	public void compute() {
@@ -45,7 +49,7 @@ public class SparkDataSetTask {
 			    integerEncoder);
 			transformedDS.collect();
 
-			Dataset<User> userDS = session.read().json(SparkSqlConstants._FILE_NAME).as(userEncoder);
+			Dataset<User> userDS = session.read().json(SparkConstants._FILE_NAME).as(userEncoder);
 			userDS.show();			
 			
 			
@@ -59,7 +63,7 @@ public class SparkDataSetTask {
 		SparkSession session = SparkSessionUtils.getSparkSession();
 		try {
 			JavaRDD<User> userRDD = session.read()
-					  .textFile(SparkSqlConstants.filename02)
+					  .textFile(SparkConstants.filename02)
 					  .javaRDD()
 					  .map(line -> {
 					    String[] parts = line.split(",");
@@ -103,7 +107,7 @@ public class SparkDataSetTask {
 		SparkSession session = SparkSessionUtils.getSparkSession();
 		try {
 			JavaRDD<String> userRDD = session.sparkContext()
-			  .textFile(SparkSqlConstants.filename02, 1)
+			  .textFile(SparkConstants.filename02, 1)
 			  .toJavaRDD();
 			
 			String schemaString = "user_id name friends review_count useful yelping_since";

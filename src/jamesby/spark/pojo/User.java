@@ -1,4 +1,4 @@
-package jamesby.spark.sparksql;
+package jamesby.spark.pojo;
 
 public class User implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;

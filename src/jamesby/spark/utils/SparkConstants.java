@@ -1,6 +1,6 @@
-package jamesby.spark.sparksql;
+package jamesby.spark.utils;
 
-public class SparkSqlConstants {
+public class SparkConstants {
 	public static final String _FILE_NAME = "hdfs://hdfs1:9000/spark/learning/sample_data.json";
 	public static final String _NEW_FILE_NAME = "hdfs://hdfs1:9000/spark/learning/sample_data_new1.json";
 	public static final String _FILE_PATH = "hdfs://hdfs1:9000/spark/learning";

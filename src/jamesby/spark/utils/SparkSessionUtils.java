@@ -1,4 +1,4 @@
-package jamesby.spark.sparksql;
+package jamesby.spark.utils;
 
 import org.apache.spark.sql.SparkSession;
 public class SparkSessionUtils implements java.io.Serializable{
@@ -8,8 +8,8 @@ public class SparkSessionUtils implements java.io.Serializable{
 	public static SparkSession getSparkSession() {
 		SparkSession sparkSession = SparkSession
 				  .builder()
-				  .appName(SparkSqlConstants._APPNAME)
-				  .config("master",SparkSqlConstants._MASTER)
+				  .appName(SparkConstants._APPNAME)
+				  .config("master",SparkConstants._MASTER)
 				  .getOrCreate();	
 		return sparkSession;
 	}
