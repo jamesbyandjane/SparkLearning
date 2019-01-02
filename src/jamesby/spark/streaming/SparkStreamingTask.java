@@ -30,6 +30,7 @@ public class SparkStreamingTask implements java.io.Serializable {
 		SparkSession session = SparkSessionUtils.getSparkSession();
 		
 		try {
+			session.sparkContext().setLogLevel("WARN");
 			Dataset<Row> lines = session
 					 .readStream()
 					 .format("socket")
